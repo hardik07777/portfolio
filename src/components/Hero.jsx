@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { SiLeetcode, SiCodechef } from "react-icons/si";
-import resume from "../resume.pdf";
 
 export default function Hero({ dark, setDark }) {
   const roles = [
@@ -118,7 +117,7 @@ export default function Hero({ dark, setDark }) {
     <div className="flex items-center gap-3 mt-6">
 
       <a
-        href={resume}
+  href="/resume.pdf"
         download
         className="px-4 py-1.5 text-sm rounded-lg bg-black text-white 
                    dark:bg-white dark:text-black 
