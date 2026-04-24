@@ -1,7 +1,7 @@
 import RevealAvatar from "./RevealAvatar";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Linkedin } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import { SiLeetcode, SiCodechef } from "react-icons/si";
 
 export default function Hero({ dark, setDark }) {
