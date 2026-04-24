@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import { GitHub, Linkedin, X } from "lucide-react";
 export default function SocialBar() {
   return (
     <motion.div
@@ -11,11 +12,11 @@ export default function SocialBar() {
       {/* Icons */}
       <div className="flex flex-col items-center gap-6">
         <a href="https://x.com/heyhardik_" target="_blank" className="group">
-          <Twitter className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-125 transition duration-300" />
+          <X className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-125 transition duration-300" />
         </a>
 
         <a href="https://github.com/hardik07777" target="_blank" className="group">
-          <Github className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-125 transition duration-300" />
+          <GitHub className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-125 transition duration-300" />
         </a>
 
         <a href="https://www.linkedin.com/in/hardik-goel-8ba42b244/" target="_blank" className="group">
