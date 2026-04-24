@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { GitHub, Linkedin, X } from "lucide-react";
 export default function SocialBar() {
   return (
