@@ -1,7 +1,7 @@
 import RevealAvatar from "./RevealAvatar";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaXTwitter ,FaMail } from "react-icons/fa6";
 import { SiLeetcode, SiCodechef } from "react-icons/si";
 
 export default function Hero({ dark, setDark }) {
