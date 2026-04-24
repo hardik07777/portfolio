@@ -1,7 +1,7 @@
 import RevealAvatar from "./RevealAvatar";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { SiLeetcode, SiCodechef } from "react-icons/si";
 
 export default function Hero({ dark, setDark }) {
@@ -162,7 +162,7 @@ export default function Hero({ dark, setDark }) {
                hover:bg-gray-100 dark:hover:bg-gray-700
                transition-all duration-200 hover:-translate-y-[2px]"
   >
-    <Linkedin size={18} />
+    <FaLinkedin size={18} />
   </a>
 
   {/* Mail */}
@@ -172,7 +172,7 @@ export default function Hero({ dark, setDark }) {
                hover:bg-gray-100 dark:hover:bg-gray-700
                transition-all duration-200 hover:-translate-y-[2px]"
   >
-    <Mail size={18} />
+    <FaMail size={18} />
   </a>
 
 </div>
