@@ -55,18 +55,26 @@ export default function Hero({ dark, setDark }) {
           {/* Row 1 */}
           <div className="flex items-center justify-between">
 
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0">
-                <RevealAvatar />
-              </div>
+            <div className="flex items-center gap-4 sm:gap-5">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 shrink-0">
+  <RevealAvatar />
+</div>
 
               <div>
-                <h1 className="text-lg sm:text-2xl md:text-3xl font-semibold text-black dark:text-white">
+                <h1 className="
+  text-xl sm:text-3xl md:text-4xl
+  font-semibold tracking-tight
+  text-gray-900 dark:text-white
+  leading-tight
+">
                   Hardik Goel
                 </h1>
 
                 {/* META */}
-                <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 flex flex-wrap items-center gap-1 sm:gap-2 mt-1">
+                <div className="
+  text-sm text-gray-500 dark:text-gray-400
+  flex items-center gap-2 mt-1
+">
 
                   <span>21</span>
                   <span className="opacity-50">•</span>
