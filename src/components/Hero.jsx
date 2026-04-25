@@ -1,30 +1,26 @@
 import RevealAvatar from "./RevealAvatar";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { SiLeetcode, SiCodechef } from "react-icons/si";
+import { Sun, Moon } from "lucide-react";
 
 export default function Hero({ dark, setDark }) {
   const roles = [
-  "Full Stack Developer",
-  "DSA & Problem Solver",
-  "React Developer",
-  "Backend Engineer"
-]
+    "Full Stack Developer",
+    "DSA & Problem Solver",
+    "React Developer",
+    "Backend Engineer",
+  ];
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setDark(true);
-    } else {
-      setDark(false);
-    }
+    setDark(savedTheme === "dark");
   }, []);
 
-  // ✅ APPLY + SAVE theme whenever it changes
   useEffect(() => {
     if (dark) {
       document.documentElement.classList.add("dark");
@@ -41,163 +37,138 @@ export default function Hero({ dark, setDark }) {
     }, 2500);
     return () => clearInterval(interval);
   }, []);
-  const longestRole = roles.reduce(
-  (a, b) => (a.length > b.length ? a : b),
-  ""
-);
 
   return (
-   <div className="max-w-4xl">
+    <div className="w-full max-w-2xl mx-auto">
+      
+      <div className="
+        rounded-2xl
+        border border-gray-200 dark:border-white/10
+        p-4 sm:p-6
+        bg-white/60 dark:bg-[#020617]/40
+        backdrop-blur-md
+      ">
 
-  {/* 🔲 Card */}
-  <div className="rounded-2xl border border-gray-200 dark:border-gray-600 p-6 
-                  bg-white/60 dark:bg-[#111827]/80 backdrop-blur-md
-                  shadow-sm hover:shadow-md transition-all duration-300">
+        {/* TOP */}
+        <div className="flex flex-col gap-4">
 
-    {/* Top Row */}
-    <div className="flex items-center justify-between">
+          {/* Row 1 */}
+          <div className="flex items-center justify-between">
 
-      <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0">
+                <RevealAvatar />
+              </div>
 
-        {/* Avatar */}
-        <div className="w-14 h-14 shrink-0">
-          <RevealAvatar />
-        </div>
+              <div>
+                <h1 className="text-lg sm:text-2xl md:text-3xl font-semibold text-black dark:text-white">
+                  Hardik Goel
+                </h1>
 
-        {/* Text */}
-        <div className="flex flex-col justify-center mt-4 ml-3">
+                {/* META */}
+                <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 flex flex-wrap items-center gap-1 sm:gap-2 mt-1">
 
-          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.1] text-black dark:text-white">
-            Hardik Goel
-          </h1>
+                  <span>21</span>
+                  <span className="opacity-50">•</span>
 
-          {/* Meta line */}
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-2">
+                  <span className="relative h-5 overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={roles[index]}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        className="whitespace-nowrap"
+                      >
+                        {roles[index]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </span>
 
-            <span>21</span>
+                  <span className="opacity-50">•</span>
+                  <span>India</span>
+                </div>
+              </div>
+            </div>
 
-            <span className="opacity-50">•</span>
+            {/* THEME BUTTON */}
+            <button
+  onClick={() => setDark(!dark)}
+  className="
+    w-10 h-10 flex items-center justify-center
+    rounded-full
+    border border-gray-300 dark:border-gray-600
+    bg-white/60 dark:bg-white/10
 
-            {/* Roles animation */}
-            <span className="relative h-5 overflow-hidden inline-block">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={roles[index]}
-                  initial={{ opacity: 0, y: 6, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
-                  transition={{ duration: 0.3 }}
-                  className="inline-block whitespace-nowrap"
-                >
-                  {roles[index]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+    transition-all duration-300
+    hover:scale-105 hover:border-indigo-400/40
+  "
+>
+  {dark ? (
+    <Sun className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+  ) : (
+    <Moon className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+  )}
+</button>
+          </div>
 
-            <span className="opacity-50">•</span>
+          {/* BUTTONS */}
+          <div className="flex flex-wrap items-center gap-3 mt-2">
 
-            <span>India</span>
+            <a
+              href="/resume.pdf"
+              download
+              className="
+              px-4 py-1.5 text-sm rounded-lg
+              bg-black text-white
+              dark:bg-white dark:text-black
+            "
+            >
+              Resume
+            </a>
 
-          </p>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
+
+              <a href="https://www.codechef.com/users/hardikgoel07" target="_blank"
+                className="p-2 rounded-lg border border-gray-200 dark:border-white/10">
+                <SiCodechef size={16} />
+              </a>
+
+              <a href="https://leetcode.com/u/Hardik_goel07/" target="_blank"
+                className="p-2 rounded-lg border border-gray-200 dark:border-white/10">
+                <SiLeetcode size={16} />
+              </a>
+
+              <a href="https://www.linkedin.com/in/hardik-goel-8ba42b244/" target="_blank"
+                className="p-2 rounded-lg border border-gray-200 dark:border-white/10">
+                <FaLinkedin size={16} />
+              </a>
+
+              <a href="mailto:hardikgoel07@gmail.com"
+                className="p-2 rounded-lg border border-gray-200 dark:border-white/10">
+                <MdEmail size={16} />
+              </a>
+
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Theme Toggle */}
-      <button
-        onClick={() => setDark(!dark)}
-        className="px-3 py-1.5 rounded-full border border-gray-300 dark:border-gray-600 
-                   bg-white/60 dark:bg-gray-800 backdrop-blur-md 
-                   hover:scale-110 hover:shadow-sm transition-all duration-300"
-      >
-        {dark ? "☀️" : "🌙"}
-      </button>
+      {/* TEXT */}
+      <p className="mt-4 sm:mt-6 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+        A 21-year-old developer from India building{" "}
+        <span className="text-gray-800 dark:text-gray-200">
+          scalable, high-performance web & real-time systems
+        </span>{" "}
+        with a focus on{" "}
+        <span className="font-medium text-gray-900 dark:text-white">
+          clean architecture
+        </span>{" "}
+        and{" "}
+        <span className="font-medium text-gray-900 dark:text-white">
+          user experience
+        </span>.
+      </p>
     </div>
-
-    {/* Buttons Row */}
-    <div className="flex items-center gap-3 mt-6">
-
-      <a
-  href="/resume.pdf"
-        download
-        className="px-4 py-1.5 text-sm rounded-lg bg-black text-white 
-                   dark:bg-white dark:text-black 
-                   hover:scale-105 hover:shadow-[0_6px_18px_rgba(0,0,0,0.15)] 
-                   transition-all duration-300"
-      >
-        Resume
-      </a>
-
-      {/* Social icons */}
-      <div className="flex gap-3 ml-2">
-
-  {/* CodeChef */}
-  <a
-    href="https://www.codechef.com/users/hardikgoel07"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-2 rounded-lg border border-gray-200 dark:border-gray-600 
-               hover:bg-gray-100 dark:hover:bg-gray-700
-               transition-all duration-200 hover:-translate-y-[2px]"
-  >
-    <SiCodechef size={18} />
-  </a>
-
-  {/* LeetCode */}
-  <a
-    href="https://leetcode.com/u/Hardik_goel07/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-2 rounded-lg border border-gray-200 dark:border-gray-600 
-               hover:bg-gray-100 dark:hover:bg-gray-700
-               transition-all duration-200 hover:-translate-y-[2px]"
-  >
-    <SiLeetcode size={18} />
-  </a>
-
-  {/* LinkedIn */}
-  <a
-    href="https://www.linkedin.com/in/hardik-goel-8ba42b244/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="p-2 rounded-lg border border-gray-200 dark:border-gray-600 
-               hover:bg-gray-100 dark:hover:bg-gray-700
-               transition-all duration-200 hover:-translate-y-[2px]"
-  >
-    <FaLinkedin size={18} />
-  </a>
-
-  {/* Mail */}
-  <a
-    href="mailto:hardikgoel07@gmail.com"
-    className="p-2 rounded-lg border border-gray-200 dark:border-gray-600 
-               hover:bg-gray-100 dark:hover:bg-gray-700
-               transition-all duration-200 hover:-translate-y-[2px]"
-  >
-    <MdEmail size={18} />
-  </a>
-
-</div>
-    </div>
-  </div>
-
-  {/* 🧠 Intro */}
- <p className="mt-6 text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl text-[15px] md:text-[16px]">
-  A 21-year-old developer from India building{" "}
-  
-  <span className="text-gray-800 dark:text-gray-200">
-    scalable, high-performance web & real-time systems
-  </span>{" "}
-  
-  with a focus on{" "}
-  
-  <span className="font-medium text-gray-900 dark:text-white">
-    clean architecture
-  </span>{" "}
-  and{" "}
-  <span className="font-medium text-gray-900 dark:text-white">
-    user experience
-  </span>.
-</p>
-</div>
   );
 }

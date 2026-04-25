@@ -14,8 +14,7 @@ export default function Experience() {
       <div className="relative pl-6 space-y-12">
 
         {/* Animated timeline line */}
-        <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-transparent via-indigo-400/70 dark:via-indigo-500/60 to-transparent" />
-
+<div className="absolute left-0 top-0 h-full w-px bg-gray-500/40 bg-gray-500/40" />
         {/* ITEM 1 */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

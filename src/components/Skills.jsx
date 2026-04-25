@@ -71,7 +71,7 @@ const handleMouseLeave = (e) => {
           
    
       
-  <section className=" relative bg-[#f8f8f8] py-10 px-2 dark:bg-[#111827]/80
+  <section className=" relative bg-[#f8f8f8] py-10 px-2 dark:bg-[#020617]/40
 backdrop-blur-sm rounded-lg border border-gray-200 dark:border-gray-600
 shadow-xl max-w-3xl">
        <span className="
@@ -84,7 +84,7 @@ shadow-xl max-w-3xl">
 
   text-gray-800 dark:text-gray-300
 
-  border border-gray-300/60 dark:border-gray-600/60
+  border border-gray-300/60 dark:border-gray-800/60
 
   shadow-sm dark:shadow-[0_4px_12px_rgba(0,0,0,0.4)]
 
@@ -111,7 +111,7 @@ shadow-xl max-w-3xl">
     px-4 py-2
     rounded-lg
 
-    bg-white/90 dark:bg-gray-800/70
+    bg-white/90 dark:bg-gray-900/70
     backdrop-blur-md
 
     border border-gray-200 dark:border-gray-600/70
@@ -130,13 +130,13 @@ shadow-xl max-w-3xl">
     cursor-pointer
   "
 >
-  {/* subtle glow layer */}
+  {/* subtle glow layer
   <div className="
     absolute inset-0 opacity-0 group-hover:opacity-100
     transition duration-300
     bg-gradient-to-r from-indigo-500/10 via-transparent to-indigo-500/10
     pointer-events-none
-  " />
+  " /> */}
 
   <span className="
     text-base z-10

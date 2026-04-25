@@ -22,12 +22,12 @@ const links = [
 
 export default function Navbar() {
   const [active, setActive] = useState("#home");
-  const isScrollingRef = useRef(false); // 🔥 controls scroll spy pause
+  const isScrollingRef = useRef(false);
 
   const handleNavClick = (e, url) => {
     e.preventDefault();
 
-    isScrollingRef.current = true; // 🚫 pause scroll updates
+    isScrollingRef.current = true;
     setActive(url);
 
     const targetElement = document.querySelector(url);
@@ -38,7 +38,6 @@ export default function Navbar() {
       });
     }
 
-    // ⏱️ resume scroll tracking after animation
     setTimeout(() => {
       isScrollingRef.current = false;
     }, 700);
@@ -46,7 +45,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isScrollingRef.current) return; // 🚫 skip during smooth scroll
+      if (isScrollingRef.current) return;
 
       let currentSection = active;
 
@@ -75,20 +74,32 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [active]);
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] flex items-center">
+    <div
+      className="
+      fixed 
+      bottom-4 left-1/2 -translate-x-1/2   /* 📱 mobile */
+      sm:bottom-auto sm:left-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0  /* 💻 desktop */
+      z-[100]
+    "
+    >
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="flex flex-col items-center gap-4 px-3 py-4 rounded-2xl
-                   bg-black/60 dark:bg-white/10 backdrop-blur-xl 
-                   border border-white/10 dark:border-white/20 shadow-2xl"
+        initial={{ opacity: 0, y: 20, x: 20 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        className="
+        flex 
+        flex-row sm:flex-col   /* 📱 horizontal → 💻 vertical */
+        items-center 
+        gap-2 sm:gap-4
+        px-3 py-2 sm:py-4
+        rounded-full sm:rounded-2xl
+        bg-black/60 dark:bg-white/10 backdrop-blur-xl 
+        border border-white/10 dark:border-white/20 
+        shadow-2xl
+      "
       >
         {links.map((item, index) => {
           const Icon = item.icon;
@@ -101,16 +112,16 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, item.url)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className={`group relative w-10 h-10 flex items-center justify-center rounded-full
-                           transition-all duration-300 cursor-pointer
-                           ${
-                             isActive
-                               ? "bg-white dark:bg-black shadow-[0_0_20px_rgba(255,255,255,0.4)] dark:shadow-[0_0_20px_rgba(0,0,0,0.6)]"
-                               : "bg-white/5 dark:bg-white/10 hover:bg-white/10 dark:hover:bg-white/20"
-                           }`}
+                className={`group relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full
+                transition-all duration-300 cursor-pointer
+                ${
+                  isActive
+                    ? "bg-white dark:bg-black shadow-[0_0_15px_rgba(255,255,255,0.4)] dark:shadow-[0_0_15px_rgba(0,0,0,0.6)]"
+                    : "bg-white/5 dark:bg-white/10 hover:bg-white/10 dark:hover:bg-white/20"
+                }`}
               >
                 <Icon
-                  size={18}
+                  size={16}
                   className={`transition-colors duration-300 z-10 ${
                     isActive
                       ? "text-black dark:text-white"
@@ -118,18 +129,21 @@ export default function Navbar() {
                   }`}
                 />
 
-                {/* Tooltip */}
+                {/* Tooltip (desktop only) */}
                 <span
-                  className="absolute right-14 px-2.5 py-1 text-[11px] font-semibold 
-                             bg-white dark:bg-black text-black dark:text-white 
-                             rounded-md pointer-events-none
-                             opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 
-                             transition-all duration-200 whitespace-nowrap shadow-lg"
+                  className="
+                  hidden sm:block
+                  absolute right-14 px-2.5 py-1 text-[11px] font-semibold 
+                  bg-white dark:bg-black text-black dark:text-white 
+                  rounded-md pointer-events-none
+                  opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 
+                  transition-all duration-200 whitespace-nowrap shadow-lg
+                "
                 >
                   {item.label}
                 </span>
 
-                {/* Active Highlight */}
+                {/* Active highlight */}
                 {isActive && (
                   <motion.div
                     layoutId="activeHighlight"

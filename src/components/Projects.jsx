@@ -37,7 +37,7 @@ export default function Projects() {
 
   return (
     <section className="mt-16 max-w-5xl">
-      <div className="w-full h-px bg-gray-200 dark:bg-gray-600 mb-10" />
+      <div className="w-full h-px bg-gray-200 dark:bg-gray-400 mb-10" />
 
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
