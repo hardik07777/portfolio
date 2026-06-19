@@ -24,7 +24,7 @@ export default function Contact() {
 
           {/* Email */}
           <a
-            href="mailto:your@email.com"
+            href="mailto:hardikgoel07@gmail.com"
             className="
               px-4 py-1.5 text-sm rounded-full
 
@@ -42,7 +42,7 @@ export default function Contact() {
 
           {/* Twitter */}
           <a
-            href="https://twitter.com/yourhandle"
+            href="https://x.com/heyhardik_"
             target="_blank"
             rel="noopener noreferrer"
             className="
